@@ -1,0 +1,37 @@
+﻿@model Municipality_Management_System.Models.ReportsModel
+
+@{
+    ViewData["Title"] = "Review Report";
+}
+
+<h1>Review Report</h1>
+
+<div>
+    <h4>Report Type: @Model.ReportType</h4>
+    <p><strong>Details:</strong> @Model.Details</p>
+    <p><strong>Submission Date:</strong> @Model.SubmissionDate.ToString("yyyy-MM-dd")</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+</div>
+
+<hr />
+
+<h3>Update Status</h3>
+
+<form method="post" asp-action="ReviewReport">
+    <input type="hidden" asp-for="ReportID" />
+    <div class="form-group">
+        <label for="Status">Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Under Review">Under Review</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Escalated">Escalated</option>
+            <option value="Dismissed">Dismissed</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update Status" class="btn btn-primary" />
+    </div>
+</form>
+
